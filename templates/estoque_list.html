@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Produtos</title>
+
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <link href="{% static 'css/sb-admin-2.min.css'%}" rel="stylesheet">
+</head>
+<body id="page-top">
+
+ <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'estoque_list'%}">
+        <div class="sidebar-brand-text mx-3">INICIO</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'estoque_cadastro'%}">
+        <div class="sidebar-brand-text mx-3">Cadastrar novo produto</div>
+      </a>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            
+
+            <!-- Nav Item - Messages -->
+            
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">usuario</span>
+                <img class="img-profile rounded-circle" src="data:image/png;base64,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">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  sair
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">panel de controle</h1>
+
+          </div>
+        </div>
+
+        <table style="width:100%">
+          <tr>
+            <th>PRODUTOS CADASTRADOS</th>
+          </tr>
+          <tr>
+            <td>
+                {% for produto in produtos %}
+
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-success"><a href="{% url 'estoque_atualizar' produto.id %}">{{ produto.nome }}</a></button>
+                      <button class="btn btn-warning"><a href="{% url 'estoque_deletar' produto.id %}">Deletar</a></button>
+                    </div>
+                {% endfor%}
+            </td>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Selecione "sair" abaixo se você estiver pronto para terminar sua sessão atual.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="http://127.0.0.1:8000/accounts/login/">sair</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js'%}"></script>
+
+    <script src="{% static 'js/sb-admin-2.min.js'%}"></script>
+
+    <script src="{% static 'vendor/chart.js/Chart.min.js'%}"></script>
+
+    <script src="{% static 'js/demo/chart-area-demo.js'%}"></script>
+    <script src="{% static 'js/demo/chart-pie-demo.js'%}"></script>
+
+</body>
+</html>
